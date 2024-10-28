@@ -19,22 +19,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -42,17 +35,22 @@ android {
 }
 
 dependencies {
-
-    // hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-
-    // retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-
     // picasso
-    implementation ("com.squareup.picasso:picasso:2.8")
+    implementation(libs.picasso)
+
+    //Dependências Hilt (dagger)
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-compiler:2.52")
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //KTX Fragment
+    implementation(libs.androidx.fragment.ktx)
+
+    // androidx lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,5 +1,7 @@
 package br.com.mizaeldouglas.app_dummy_json_mvvm_hilt.data.dto
 
+import br.com.mizaeldouglas.app_dummy_json_mvvm_hilt.domain.model.User
+
 data class UserDTO(
     val address: Address,
     val age: Int,
@@ -30,3 +32,14 @@ data class UserDTO(
     val username: String,
     val weight: Double
 )
+
+fun UserDTO.toUser(): User {
+    return User(
+        firstName = this.firstName,
+        lastName = this.lastName,
+        age = this.age,
+        email = this.email,
+        phone = this.phone,
+        image = this.image,
+    )
+}

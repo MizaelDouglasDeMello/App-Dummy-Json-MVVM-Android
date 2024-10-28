@@ -6,7 +6,6 @@ import retrofit2.http.GET
 
 interface DummyAPI {
 
-    // https://dummyjson.com/users
     @GET("users")
     suspend fun getUsers() : Response<ResultApiDTO>
 }
